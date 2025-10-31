@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DAYANITHI.M — Portfolio</title>
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--muted:#9aa4b2;--accent:#6ee7b7}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;background:linear-gradient(180deg,#071027 0%, #0b1220 100%);color:#e6eef6;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px}
+    .card{width:100%;max-width:980px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;padding:28px;box-shadow:0 8px 30px rgba(2,6,23,0.6);display:grid;grid-template-columns:260px 1fr;gap:24px}
+    .photo{display:flex;flex-direction:column;align-items:center;text-align:center}
+    .avatar{width:180px;height:180px;border-radius:50%;object-fit:cover;border:4px solid rgba(255,255,255,0.06);background:linear-gradient(180deg,#1f2937,#0b1220)}
+    h1{margin:12px 0 4px;font-size:22px}
+    p.role{margin:0;color:var(--muted)}
+    .contact{margin-top:16px;display:flex;flex-direction:column;gap:8px;width:100%}
+    .contact a{color:#cfeff0;text-decoration:none;font-size:14px}
+    .section{background:rgba(255,255,255,0.02);padding:18px;border-radius:10px}
+    .about{line-height:1.6;color:#dbe9f2}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px}
+    .skill{display:inline-block;padding:8px 10px;border-radius:999px;background:rgba(255,255,255,0.03);font-size:13px;color:var(--muted);margin:6px 6px 0 0}
+    .projects{display:flex;flex-direction:column;gap:10px}
+    .proj{padding:12px;border-radius:8px;background:rgba(255,255,255,0.01);border:1px solid rgba(255,255,255,0.02)}
+    .buttons{display:flex;gap:10px;margin-top:12px}
+    .btn{padding:10px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:600}
+    .btn.primary{background:var(--accent);color:#05201a}
+    .btn.ghost{background:transparent;color:#cfeff0;border:1px solid rgba(255,255,255,0.04)}
+    footer{margin-top:18px;color:var(--muted);font-size:13px}
+    @media (max-width:820px){.card{grid-template-columns:1fr;max-width:720px}.photo{flex-direction:row;gap:16px}.avatar{width:120px;height:120px}}
+  </style>
+</head>
+<body>
+  <main class="card" id="portfolio">
+    <aside class="photo">
+      <img src="d:\WhatsApp Image 2025-11-01 at 03.30.44_6bcaaaf8.jpg" alt="Your Name" class="avatar" id="avatar">
+      <h1 id="name"></h1>
+      <p class="role" id="role">Web Developer • Designer</p>
+
+      <div class="contact">
+        <a href="#" id="email">📧 dayanithikiran@gmail.com</a>
+        <a href="#" id="phone">📱 +91 73394 77691</a>
+        <a href="#" id="location">📍 Nilgiris, INDIA</a>
+      </div>
+
+      <div style="margin-top:16px;width:100%;display:flex;justify-content:center">
+        <button class="btn primary" onclick="downloadResume()">Download CV</button>
+      </div>
+    </aside>
+
+    <section>
+      <div class="section about">
+        <h2 style="margin:0 0 10px 0">About</h2>
+        <p id="about">Hi — I'm <strong>DAYANITHI.M</strong>, a passionate learner and aspiring web developer.
+I enjoy creating clean, responsive, and user-friendly websites.
+My goal is to continuously improve my coding skills and bring creative ideas to life.
+I’m always eager to learn new technologies and take on exciting challenge.</p>
+
+        <div class="buttons">
+        </div>
+      </div>
+
+      <div style="height:14px"></div>
+
+      <div class="section">
+        <h3 style="margin:0 0 10px 0">Skills</h3>
+        <div class="grid" id="skills">
+          <span class="skill">HTML</span>
+          <span class="skill">CSS</span>
+          <span class="skill">JavaScript</span>
+          <span class="skill">React</span>
+          <span class="skill">Node.js</span>
+          <span class="skill">UI/UX</span>
+        </div>
+      </div>
+
+      <div style="height:14px"></div>
+
+      <div class="section" id="projects">
+        <h3 style="margin:0 0 10px 0">Projects</h3>
+        <div class="projects">
+          <article class="proj">
+            <strong>Project One</strong>
+            <div style="color:var(--muted);font-size:13px;margin-top:6px">Short description of the project and technologies used.</div>
+          </article>
+
+          <article class="proj">
+            <strong>Project Two</strong>
+            <div style="color:var(--muted);font-size:13px;margin-top:6px">Short description of the project and technologies used.</div>
+          </article>
+        </div>
+      </div>
+
+      <footer>
+        © <span id="year"></span> <span id="nameFooter">DAYANITHI.M</span> · Built with ❤️
+      </footer>
+    </section>
+  </main>
+
+  <script>
+    // Small helper scripts — feel free to remove / customize
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function copyEmail(){
+      const email = document.getElementById('email').textContent.replace('📧 ','');
+      navigator.clipboard?.writeText(email).then(()=>alert('Email copied!'),()=>alert('Copy failed — please copy manually.'));
+    }
+    function scrollToSection(id){
+      document.getElementById(id).scrollIntoView({behavior:'smooth'});
+    }
+    function downloadResume(){
+      // Replace 'resume.pdf' with your resume file path or a real URL
+      const url = 'resume.pdf';
+      window.open(url, '_blank');
+    }
+
+    // OPTIONAL: Load a placeholder image if user-photo missing
+    const img = document.getElementById('avatar');
+    img.onerror = ()=>{ img.src = 'data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22180%22 height=%22180%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%230b1220%22/><text x=%2250%25%22 y=%2250%25%22 font-size=%2230%22 fill=%22%23e6eef6%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22>You</text></svg>'; };
+  </script>
+</body>
